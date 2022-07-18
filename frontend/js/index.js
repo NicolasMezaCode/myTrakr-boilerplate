@@ -24,7 +24,6 @@ $(document).ready(function(){
     }).done((data)=>{
       data.forEach((account)=>{
         $('#categoriesOption').append(`<option>${account.name.name}</option>`)
-
       })
   });
   };
@@ -43,7 +42,8 @@ $(document).ready(function(){
       }).done((data)=>{
         let existentUser;
         if(data.length==0){
-          return newAccount(accountName);
+          return newAccount(accountName)
+       ;
         }
         data.forEach((account)=>{
         if(account.username===accountName){
@@ -57,6 +57,7 @@ $(document).ready(function(){
           return newAccount(accountName);
         }
       })
+      
     }
   });
 
@@ -94,61 +95,65 @@ $(document).ready(function(){
     }
   })
 
-  $('#submit-btn').click((event)=>{
-    event.preventDefault();
-    let accountName=$('#accountSelector').val();
-    let category=$('#categoriesOption').val();
-    let description=$('#descriptionInput').val();
-    let amount=$('#amountInput').val();
-    let from=$('#fromSelector').val();
-    let to=$('#toSelector').val();
-    let selectedVal='';
-    let selected= $("#selectionOptions input[type='radio']:checked")
-    if (selected.length > 0) {
-      selectedVal = selected.val();
+  
+});
+
+$('#submit-btn').click((event)=>{
+  event.preventDefault();
+  let accountName=$('#accountSelector').val();
+  let category=$('#categoriesOption').val();
+  let description=$('#descriptionInput').val();
+  let amount=$('#amountInput').val();
+  let from=$('#fromSelector').val();
+  let to=$('#toSelector').val();
+  let selectedVal='';
+  let selected= $("#selectionOptions input[type='radio']:checked")
+  if (selected.length > 0) {
+    selectedVal = selected.val();
+  }
+  else{
+    alert('choose a transaction')
+  }
+  
+  if(selectedVal==="deposit"||selectedVal==="whitdraw"){
+    if(amount!=""&&amount!=" "&&amount!=0){
+      let transactionDetail={
+        type:selectedVal,
+        name:accountName,
+        category:category,
+        amount:amount,
+        descript:description
+      }
+      return newTransaction(transactionDetail);
     }
     else{
-      alert('choose a transaction')
+      alert('insert amount')
     }
-    
-    if(selectedVal==="deposit"||selectedVal==="whitdraw"){
-      if(amount!=""&&amount!=" "&&amount!=0){
-        let transactionDetail={
+  }
+   if(selectedVal==="transfer"){
+    if(amount!=""&&amount!=" "&&amount!=0){
+      if(to!=from){
+        let transferDetail={
           type:selectedVal,
-          name:accountName,
+          from:from,
+          to:to,
           category:category,
-          amount:amount,
-          descript:description
+          description:description,
+          amount:amount
         }
-        return newTransaction(transactionDetail);
+        return newTransaction(transferDetail)
+      }
+      else {
+        alert('you can not transfer to the same account')
+      }
       }
       else{
-        alert('insert amount')
+        alert('Insert an amount')
       }
-    }
-     if(selectedVal==="transfer"){
-      if(amount!=""&&amount!=" "&&amount!=0){
-        if(to!=from){
-          let transferDetail={
-            type:selectedVal,
-            from:from,
-            to:to,
-            category:category,
-            description:description,
-            amount:amount
-          }
-          return newTransaction(transferDetail)
-        }
-        else {
-          alert('you can not transfer to the same account')
-        }
-        }
-        else{
-          alert('Insert an amount')
-        }
-    }
-  })
-});
+  }
+})
+
+
 
 let updateSum=()=>{
   $.ajax({

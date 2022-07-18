@@ -19,23 +19,27 @@
     <link rel="stylesheet" href="./css/index.css" />
   </head>
   <body>
-    myTrakr
+    <div class="header">
+      <h1>MyTrakr</h1>
+    </div>
     <main>
+      <div class="center margin">
       <form action="">
         New Account:
         <input id="newAccountName" type="text" />
         <button id="newAccount-btn">Add new account</button>
+      </div>
       </form>
       <form action="">
-        <div id="selectionOptions">
+        <div id="selectionOptions" >
         New Transaction: Deposit
         <input type="radio" name="transaction" id="deposit-Btn"  onChange="depositBtn()" value="deposit" />
         Withdraw
-        <input type="radio" name="transaction" id="withdraw-Btn"  onChange="whitdrawBtn()" value="whitdraw"/>
+        <input type="radio" name="transaction" id="withdraw-Btn"  onChange="whitdrawBtn()" value="whitdraw" />
         Transfer
-        <input type="radio" name="transaction" id="transfer-Btn"  onChange="transferBtn()" value="transfer" />
+        <input type="radio" name="transaction" id="transfer-Btn"  onChange="transferBtn()" value="transfer"  />
         </div>
-        <div id="account-btn-container">
+        <div id="account-btn-container ">
         Account:
         <select id="accountSelector" onChange="updateSum()">
         </select>

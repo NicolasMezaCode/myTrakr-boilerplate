@@ -24,21 +24,70 @@ class Deposit extends Transaction {
   }
 }
 
-let newTransaction=(transaction)=>{
-  console.log(transaction)
-
-  if(transaction.type==="deposit"||transaction.type==="withdraw"){
-    
-  }
-  else{
-   
-  }
+let newTransaction=(transaction)=>{ 
+  let userId="";
+  let toId="";
+  let fromId="";
   $.ajax({
-    url:"http://localhost:3000/transactions",
+    url:"http://localhost:3000/accounts",
     type:"get",
     contentType:"application/json",
     dataType:"json"
   }).done((data)=>{
-    console.log(data)
-  })
+    data.forEach((account)=>{
+      if(account.username===transaction.name){
+        return userId=account.id
+      }
+      if(account.username===transaction.from){
+        return fromId=account.id;
+      }
+      if(account.username===transaction.to){
+        return toId=account.id;
+      }
+    })})
+    console.log(userId+' '+toId+" "+ fromId)
+  if(transaction.type==="deposit"||transaction.type==="withdraw"){
+    return  $.ajax({
+      url:"http://localhost:3000/transaction",
+      type:"post",
+      contentType:"application/json",
+      dataType:"json",
+      data:JSON.stringify({
+        newTransaction:{
+          accountId:7,
+          accountIdFrom:7,
+          accountIdTo:7
+          // username:`${transaction.name}`,
+          // type:`${transaction.type}`,
+          // category:`${transaction.category}`,
+          // amount:`${transaction.amount}`,
+          // description:`${transaction.descript}`
+        }
+      })
+    })
+   
+  }
+  else{
+    return  $.ajax({
+      url:"http://localhost:3000/transaction",
+      type:"post",
+      contentType:"application/json",
+      dataType:"json",
+      data:JSON.stringify({
+        newTransaction:{
+          accountId:7,
+          accountIdFrom:7,
+          accountIdTo:7
+          // from:`${transaction.from}`,
+          // to:`${transaction.to}`,
+          // type:`${transaction.type}`,
+          // category:`${transaction.category}`,
+          // amount:`${transaction.amount}`,
+          // description:`${transaction.descript}`
+        }
+      })
+    })
+  
+  }
+
 }
