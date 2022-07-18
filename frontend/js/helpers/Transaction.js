@@ -29,7 +29,7 @@ let newTransaction=(transaction)=>{
   let toId="";
   let fromId="";
   $.ajax({
-    url:"http://localhost:3000/accounts",
+    url:"https://final-proyect-trackr.herokuapp.com/accounts",
     type:"get",
     contentType:"application/json",
     dataType:"json"
@@ -48,7 +48,7 @@ let newTransaction=(transaction)=>{
     console.log(userId+' '+toId+" "+ fromId)
   if(transaction.type==="deposit"||transaction.type==="withdraw"){
     return  $.ajax({
-      url:"http://localhost:3000/transaction",
+      url:"https://final-proyect-trackr.herokuapp.com/transaction",
       type:"post",
       contentType:"application/json",
       dataType:"json",

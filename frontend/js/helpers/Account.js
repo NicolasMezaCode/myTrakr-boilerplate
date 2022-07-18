@@ -15,7 +15,7 @@ class Account {
 
 let newAccount=(value)=>{
     $.ajax({
-      url:"http://localhost:3000/accounts",
+      url:"https://final-proyect-trackr.herokuapp.com/accounts",
       type:"post",
       contentType:"application/json",
       dataType:"json",
@@ -28,7 +28,7 @@ let newAccount=(value)=>{
       })
     }).done((data)=>{})
     $.ajax({
-      url:"http://localhost:3000/accounts",
+      url:"https://final-proyect-trackr.herokuapp.com/accounts",
       type:"get",
       contentType:"application/json",
       dataType:"json"

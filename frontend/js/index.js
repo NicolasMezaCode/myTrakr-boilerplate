@@ -4,7 +4,7 @@ $(document).ready(function(){
   
   const displayFunction=()=>{
     $.ajax({
-      url:"http://localhost:3000/accounts",
+      url:"https://final-proyect-trackr.herokuapp.com/accounts",
       type:"get",
       contentType:"application/json",
       dataType:"json"
@@ -17,7 +17,7 @@ $(document).ready(function(){
       })
     })
     $.ajax({
-      url:"http://localhost:3000/categories",
+      url:"https://final-proyect-trackr.herokuapp.com/categories",
       type:"get",
       contentType:"application/json",
       dataType:"json"
@@ -35,7 +35,7 @@ $(document).ready(function(){
     let accountName=$('#newAccountName').val();
     if(accountName!=""&&accountName!=" "){
       $.ajax({
-        url:"http://localhost:3000/accounts",
+        url:"https://final-proyect-trackr.herokuapp.com/accounts",
         type:"get",
         contentType:"application/json",
         dataType:"json"
@@ -71,7 +71,7 @@ $(document).ready(function(){
     let categoryName=$('#categoryInput').val();
     if(categoryName!=""&&categoryName!=" "){
       $.ajax({
-        url:"http://localhost:3000/categories",
+        url:"https://final-proyect-trackr.herokuapp.com/categories",
         type:"get",
         contentType:"application/json",
         dataType:"json"
@@ -157,7 +157,7 @@ $('#submit-btn').click((event)=>{
 
 let updateSum=()=>{
   $.ajax({
-    url:"http://localhost:3000/accounts",
+    url:"https://final-proyect-trackr.herokuapp.com/accounts",
     type:"get",
     contentType:"application/json",
     dataType:"json"

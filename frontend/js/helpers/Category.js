@@ -1,6 +1,6 @@
 let newCategory=(value)=>{
     $.ajax({
-        url:"http://localhost:3000/categories",
+        url:"https://final-proyect-trackr.herokuapp.com/categories",
         type:"post",
         contentType:"application/json",
         dataType:"json",
@@ -11,7 +11,7 @@ let newCategory=(value)=>{
         })
       }).done((data)=>{})
       $.ajax({
-        url:"http://localhost:3000/categories",
+        url:"https://final-proyect-trackr.herokuapp.com/categories",
         type:"get",
         contentType:"application/json",
         dataType:"json"
