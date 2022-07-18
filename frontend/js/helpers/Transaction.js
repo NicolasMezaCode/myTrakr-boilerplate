@@ -1,3 +1,5 @@
+// import { getAllTransactions } from "../../../src/transactions";
+
 class Transaction {
   constructor(amount, account) {
     this.amount = amount;
@@ -20,4 +22,23 @@ class Deposit extends Transaction {
   get value() {
     return this.amount;
   }
+}
+
+let newTransaction=(transaction)=>{
+  console.log(transaction)
+
+  if(transaction.type==="deposit"||transaction.type==="withdraw"){
+    
+  }
+  else{
+   
+  }
+  $.ajax({
+    url:"http://localhost:3000/transactions",
+    type:"get",
+    contentType:"application/json",
+    dataType:"json"
+  }).done((data)=>{
+    console.log(data)
+  })
 }

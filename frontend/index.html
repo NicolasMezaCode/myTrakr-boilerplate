@@ -23,42 +23,51 @@
     <main>
       <form action="">
         New Account:
-        <input type="text" />
-        <button>Add new account</button>
+        <input id="newAccountName" type="text" />
+        <button id="newAccount-btn">Add new account</button>
       </form>
       <form action="">
+        <div id="selectionOptions">
         New Transaction: Deposit
-        <input type="radio" />
+        <input type="radio" name="transaction" id="deposit-Btn"  onChange="depositBtn()" value="deposit" />
         Withdraw
-        <input type="radio" />
+        <input type="radio" name="transaction" id="withdraw-Btn"  onChange="whitdrawBtn()" value="whitdraw"/>
         Transfer
-        <input type="radio" />
+        <input type="radio" name="transaction" id="transfer-Btn"  onChange="transferBtn()" value="transfer" />
+        </div>
+        <div id="account-btn-container">
         Account:
-        <select></select>
-
+        <select id="accountSelector" onChange="updateSum()">
+        </select>
+        </div>
+        <div id="fromtoForm">
         From:
-        <select></select>
+        <select id="fromSelector"></select>
 
         To:
-        <select></select>
+        <select id="toSelector"></select>
+        </div>
+        
         Category:
-        <select></select>
-        <input type="text" />
-        <button type="button">Add new category</button>
-
+        <select id="categoriesOption" ></select>
+        <div id="categorySection" class="hidden">
+        <input type="text" id="categoryInput" />
+        <button type="button"id="categoryInput-btn">Add</button>
+        </div>
+        <button type="button"id="newCategoryInput">New category</button>
         Description
-        <input type="text" />
+        <input type="text" name="description" id="descriptionInput" required />
 
         Amount:
-        <input type="number" />
+        <input type="number" name="description" id="amountInput" required/>
 
-        <button>Add transaction</button>
+        <input type="submit" id="submit-btn" value="Add transactions"></input>
       </form>
 
       Account summary
-      <ul></ul>
+      <ul id="accountSummary"></ul>
       Filter by account:
-      <select></select>
+      <select id="filterSelector"></select>
       <table>
         <tr>
           <th>Id</th>
@@ -75,7 +84,7 @@
     <script src="./js/helpers/Account.js"></script>
     <script src="./js/helpers/Category.js"></script>
     <script src="./js/helpers/Common.js"></script>
-    <script src="./js/helpers/Transaction.js"></script>
-    <script src="./js/index.js"></script>
+    <script  src="./js/helpers/Transaction.js"></script>
+    <script  src="./js/index.js"></script>
   </body>
 </html>
